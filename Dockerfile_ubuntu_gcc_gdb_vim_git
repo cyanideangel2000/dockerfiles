@@ -11,6 +11,7 @@ RUN apt-get update \
   ca-certificates \
   build-essential \
 # Install Tool
+  autoconf \
   gcc-8 \
   g++-8 \
   vim \
