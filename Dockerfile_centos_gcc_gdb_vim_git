@@ -1,5 +1,9 @@
 FROM centos:latest
 MAINTAINER Varun Tewari <tewari.varun@gmail.com>
 
-RUN yum -y update && yum clean all
-RUN yum -y install gcc gcc-c++ kernel-devel make autoconf vim git gdb cscope ca-certificates
+RUN yum --nogpgcheck -y update && yum clean all
+RUN yum --nogpgcheck -y install gcc gcc-c++ kernel-devel make autoconf vim git gdb cscope ca-certificates
+RUN yum --nogpgcheck -y install perl pcre-devel zlib zlib-devel
+RUN yum --nogpgcheck -y install openssl-devel
+RUN yum --nogpgcheck -y groupinstall 'Development Tools'
+RUN yum -y --nogpgcheck install net-tools

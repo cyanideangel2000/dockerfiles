@@ -16,4 +16,5 @@ RUN apt-get update \
   g++-8 \
   vim \
   git \
-  gdb 
+  gdb \
+  cscope
