@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:latest
 MAINTAINER Varun Tewari <tewari.varun@gmail.com>
 
 # Pre-Req Repos
@@ -10,6 +10,8 @@ RUN apt-get update \
  && apt-get install -y \
   ca-certificates \
   build-essential \
+  lttng-tools \
+  liblttng-ust-dev \
 # Install Tool
   autoconf \
   gcc-8 \
@@ -17,4 +19,5 @@ RUN apt-get update \
   vim \
   git \
   gdb \
+  cmake \
   cscope
