@@ -1,9 +1,15 @@
 FROM centos:latest
 MAINTAINER Varun Tewari <tewari.varun@gmail.com>
 
-RUN yum --nogpgcheck -y update && yum clean all
-RUN yum --nogpgcheck -y install gcc gcc-c++ kernel-devel make autoconf vim git gdb cscope ca-certificates
-RUN yum --nogpgcheck -y install perl pcre-devel zlib zlib-devel
-RUN yum --nogpgcheck -y install openssl-devel
-RUN yum --nogpgcheck -y groupinstall 'Development Tools'
-RUN yum -y --nogpgcheck install net-tools
+RUN dnf -y install dnf-plugins-core epel-release
+RUN dnf config-manager --set-enabled PowerTools
+RUN dnf -y groupinstall --with-optional "Development Tools"
+RUN dnf --nogpgcheck -y install gcc gcc-c++ kernel-devel make autoconf vim git gdb cscope ca-certificates wget sudo hostname time
+RUN dnf --nogpgcheck -y install perl pcre-devel zlib zlib-devel libcurl-devel libbpf-devel libpcap-devel elfutils-devel binutils-devel
+RUN dnf --nogpgcheck -y install openssl-devel
+RUN dnf --nogpgcheck -y groupinstall 'Development Tools'
+RUN dnf -y --nogpgcheck install net-tools
+RUN dnf -y --nogpgcheck install python3 python3-devel python3-pip kernel-devel kernel-core kernel-modules
+RUN dnf --nogpgcheck -y update && dnf clean all
+WORKDIR /work
+CMD /bin/bash
