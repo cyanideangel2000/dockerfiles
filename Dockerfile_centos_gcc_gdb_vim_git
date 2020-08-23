@@ -7,9 +7,9 @@ RUN dnf -y groupinstall --with-optional "Development Tools"
 RUN dnf --nogpgcheck -y install gcc gcc-c++ kernel-devel make autoconf vim git gdb cscope ca-certificates wget sudo hostname time
 RUN dnf --nogpgcheck -y install perl pcre-devel zlib zlib-devel libcurl-devel libbpf-devel libpcap-devel elfutils-devel binutils-devel
 RUN dnf --nogpgcheck -y install openssl-devel
-RUN dnf --nogpgcheck -y groupinstall 'Development Tools'
 RUN dnf -y --nogpgcheck install net-tools
 RUN dnf -y --nogpgcheck install python3 python3-devel python3-pip kernel-devel kernel-core kernel-modules
+RUN dnf -y --nogpgcheck install kernel-devel kernel-core kernel-modules libnftnl-devel libnftnl libmnl-devel libmnl libnfnetlink libnfnetlink
 RUN dnf --nogpgcheck -y update && dnf clean all
 WORKDIR /work
 CMD /bin/bash
